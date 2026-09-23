@@ -1,0 +1,298 @@
+\documentclass[11pt, a4paper]{article}
+\input{../Config.tex}
+\usepackage{hyperref}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesection}{}
+
+\begin{document}
+\pagestyle{fancy}
+% 
+\lhead{Carles Costa}
+\rhead{Problemes de teoria de nombres}
+% ------------------------------------------------------
+% -------------------- Exercici 1 ----------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP1 Exercici 1}]
+        L'anell dels \textit{enters de Gauss} es defineix com
+        \[
+            \ZZ[i]=\{a+ib\mid a,b\in \ZZ\},
+        \]
+        on $i=\sqrt{-1}$. Anàlogament, anomenarem
+        \[
+            \QQ(i)=\{a+ib\mid a,b\in \QQ\}
+        \]
+        el cos dels \textit{nombres racionals de Gauss}. Definim la \textit{norma} d'un nombre de Gauss com 
+        \[
+            N(\alpha)=\alpha\bar{\alpha}=a^2+b^2.
+        \]
+        \begin{enumerate}
+            \item Demostreu que $\ZZ[i]$ és un domini euclidià respecte a la norma $N:\ZZ[i]\to\ZZ_{\geq0}$.
+            \item Demostreu que $N(\alpha\beta)=N(\alpha)N(\beta)$ per a tot $\alpha,\beta\in \ZZ[i]$.
+            \item Demostreu que $\alpha\in\ZZ[i]$ és unitat si i només si $N(\alpha)=1$.
+            \item Sigui $p$ un primer senar de $\ZZ$. Demostreu que $p$ no és un element primer de $\ZZ[i]$ si i només si $p\equiv1\pmod 4$.
+            \item (Fermat 1640) Sigui $p$ un primer senar de $\ZZ$. Demostreu que $p$ es pot expressar com la suma dels quadrats de dos nombres enters si i només si $p\equiv1\pmod4$.
+            \item Demostreu que llevat d'associats, els elements primers de $\ZZ[i]$ són:
+            \begin{enumerate}
+                \item $1+i$,
+                \item $a+ib$, on $a,b\in\ZZ$ són tals que $a^2+b^2$ és un primer $p\equiv1\pmod4$ de $\ZZ$, i $a>|b|>0$.
+                \item $p$. on $p\equiv3\pmod 4$ és un primers de $\ZZ$.
+            \end{enumerate}
+        \end{enumerate}
+    \end{tcolorbox}
+    \subsection{Exercici 1.1}
+    Volem veure que si tenim $a,b\in\ZZ[i]$ ($b\neq0$), aleshores podem trobar $q,r\in \ZZ[i]$ tals que $a=bq+r$ amb $N(r)<N(b)$. Per construir tals $q,r$, prenem $c+di=a/b\in\QQ[i]$. Siguin $c'$ i $d'$ els enters més pròxims a $c$ i $d$ respectivament (és a dir, $c-c'=\eps_c$ i $d-d'=\eps_d$ tals que $|\eps_c|, |\eps_d|\leq\half$). Sigui ara $q=c'+d'i$ i $r=b\eps_c+b\eps_di$
+    \[
+        a=b(c+di)=b(c'+d'i)+ (b\eps_c+b\eps_di)=bq+r.
+    \]
+    Ara si veiem que $N(r)<N(b)$ ja estarem, però:
+    \[
+        N(r)=N(b\eps_c+b\eps_di)\overset{\text{Apartat }2}{=}N(b)(\eps_c^2+\eps_d^2)\leq N(b)/2< N(b)
+    \]
+    Que és el que volíem veure.
+    \subsection{Exercici 1.2}
+    Si $\alpha=a+bi$ i $\beta=c+di$, aleshores 
+    \begin{align*}
+        N(\alpha\beta)&=N(ac-bd+bci+adi)=\\
+        &=(ac-bd)^2+(bc+ad)^2=\\
+        &=a^2c^2-2abcd+b^2d^2+b^2c^2+2abcd+a^2d^2=\\
+        &=(a^2+b^2)(c^2+d^2)=\\
+        &=N(\alpha)N(\beta)
+    \end{align*}
+    \subsection{Exercici 1.3}
+    Per veure la primera implicació ($\impliedby$), notem que si $\alpha$ és unitat, aleshores $N(\alpha\alpha^{-1})=N(1)=1$, però $N(\alpha)N(\alpha^{-1})$=1, que ens diu que ambdues són iguals a 1.
+    % notem que $N$ és un morfisme de grups que envia $(\ZZ[i],\times)\to(\ZZ_{\geq0},\times)$, per tant les unitats de $\ZZ[i]$ s'envien a les unitats de $\ZZ_{\geq0}$.\par
+    Per veure la segona implicació, si $N(\alpha)=1$ aleshores per la definició de norma $\alpha\bar{\alpha}=1$, per tant, hem trobat l'element invers de $\alpha$.
+    \subsection{Exercici 1.4}
+    Sigui $p$ un primer senar de $\ZZ$ però que no és primer a $\ZZ[i]$, aleshores tindríem $p=ab$, i fent normes als 2 costats aconseguim: $p^2=N(a)N(b)$. Com que $p$ és primer a $\ZZ$, tenim 2 possibilitats: $N(a)=N(b)=p$, o $N(a)=p^2$ i $N(b)=1$. En el segon cas tenim que $b$ és unitat, i per tant, no ens interessa. Suposem que $N(a)=N(x+iy)=x^2+y^2=p$ i mirant mòdul 4 tenim $p=x^2+y^2\equiv 0,1,2\pmod4$, però com que $p$ és senar, $p\equiv1\pmod4$.\par
+
+    Suposem que $p\equiv1\pmod4$, aleshores sabem que $\left(\frac{-1}{p}\right)=1$, per tant, existeix alguna solució a l'equació $x^2+1\equiv0\pmod p$. Sigui $x\in\ZZ$ un enter que satisfaci aquesta equació, aleshores $p\mid x^2+1=(x+i)(x-i)$. Suposem que $p$ és primer, aleshores $p\mid x+i$ o $p\mid x-i$, per tant $p(a+bi)=x\pm i$, i fixant-nos en la part imaginària, obtenim que $pb=\pm1$, que no pot ser.
+    \subsection{Exercici 1.5}
+    Si $p$ es pot expressar com la suma de 2 quadrats (pel mateix argument d'abans de mirar-te les coses mòdul 4), obtens que $p\equiv 1\pmod4$.\par
+    Si $p$ és congru amb 1 mòdul 4, aleshores $p=\alpha\beta$, amb $\alpha, \beta\in \ZZ[i]$ (cap dels dos és una unitat), i per tant $N(\alpha)=p$, és a dir, $N(x+yi)=x^2+y^2=p$, que és el que volíem veure.
+    \subsection{Exercici 1.6}
+    Recordem que si $N(x)$ és un irreductible, aleshores $x$ és irreductible.
+    \begin{dem}[Si $N(x)$ és irreductible, aleshores $x$ és irreductible.]
+        Suposem que $x=ab$, mirant normes ens queda que $N(x)=N(a)N(b)$, però $N(x)$ és irreductible, és a dir que $N(a)=1$ o $N(b)=1$, i per tant, almenys un de $a$ i $b$ són unitats.
+    \end{dem}
+    A partir d'aquest mini lema, podem veure ràpidament que els primers de la forma $1+i$ i $a+ib$ que satisfan $N(a+ib)=p$ són primers (com que estem en un anell de factorització única, primer = irreductible). A més, ja hem vist que els primers de $\ZZ$ de la forma $p\equiv3\pmod4$ són primers de $\ZZ$.\par
+    Ara hem de veure que no n'hi ha més. Aleshores si veiem que les úniques normes possibles per un primer $z$ són $N(z)=p$ o $N(z)=p^2$, ja estarem, ja que $N(z)=p$ sempre és primer, i si $N(z)=p^2$, aleshores ha de ser forçosament $z=p\equiv3\pmod4$.\par
+    Sigui $z=a+bi\in \ZZ[i]$ primer. Considerem $N(z)$: podria ser que $N(z)$ ja sigui un nombre primer, i en aquest cas ja estaríem; en cas contrari, sigui $p\mid N(z)$. Per estudiar aquest cas, considerarem primer $p\equiv3\pmod 4$, i després $p\equiv 1\pmod 4$.\par
+    Suposem que $p\equiv 3\pmod4$, aleshores $p\mid z\ol z$, per tant (com que $p$ és primer a $\ZZ[i]$), tenim que $p\mid z$ o $p\mid \ol z$, però com que $p=\ol p$, tenim que de fet passen els 2 casos, i en particular $p\mid z$, que ens diu que $z\sim p$ (és un associat de $p$).\\
+    El segon cas és si \underline{$p\equiv 1\pmod 4$}, és a dir, tenim que $p\mid z\ol z$, però com que $p\equiv 1\pmod 4$, tenim que $p=\pi\ol\pi$ amb $\pi$ primer de $\ZZ[i]$; i com que $\pi\mid z\ol z$, tenim $\pi\mid z$ o $\pi\mid \ol z\iff \ol\pi\mid z$, i per tant, $z\sim \pi$ o $z\sim \ol\pi$; que és el que volíem veure.
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 2 ----------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP1 Exercici 2}]
+        Diem que $(x,y,z)\in \ZZ_{>0}^3$ és una \textit{terna pitagòrica} si $x^2+y^2=z^2$.
+        \begin{enumerate}
+            \item Demostreu que per $\alpha\in\QQ(i)$:
+            \[
+                N(\alpha)=1\iff \alpha=\frac{\beta}{\ol\beta}\text{ per algun }\beta\in\QQ(i)^\times
+            \]
+            \item Deduïu de l'apartat anterior que si $(x,y,z)$ és una terna pitagòrica, aleshores existeix un enter positiu $d$ i dos enters coprimers $u$ i $v$ tals que
+            \[
+            x=d(v^2-u^2),\quad y=2duv,\quad z=d(u^2+v^2),
+            \]
+            llevat de permutació de $x$ i $y$.
+            \item Doneu una demostració geomètrica de l'apartat anterior seguint els següents passos. Considereu $C:X^2+Y^2-1$ i $L_m:Y-m(X+1)$ per $m\in\QQ$. Demostreu que existeix una bijecció entre els punts de coordenades racionals de $C\setminus \{(-1,0)\}$ amb les ternes pitagòriques primitives.
+        \end{enumerate}
+    \end{tcolorbox}
+    \subsection{Exercici 2.1}
+    Notem que això és exactament un cas particular del \textit{teorema 90 de Hilbert}. Adaptaré la demostració que hi ha als apunts del Xevi, en el nostre cas particular.
+    La implicació $\impliedby$ és evident. Considerem ara $\alpha\in \ZZ[i]$ tal que $N(\alpha)=1$. Si $\alpha=-1$, aleshores $\alpha =\frac{i}{-i}$. Suposem ara que $\alpha\neq -1$, sigui $\beta = 1+\alpha$, aleshores:
+    \[
+        \alpha\ol\beta=\alpha+ \alpha\ol\alpha\overset{\alpha\ol\alpha=1}{=}1+\alpha=\beta
+    \]
+    I com que $\beta\neq0$, tenim que $\alpha=\frac{1+\alpha}{\ol{1+\alpha}}$, que és el que volíem.
+    \subsection{Exercici 2.2}
+    Abans de començar, notem que reduint l'equació mòdul 2, almenys un dels termes ha de ser parell: suposem que $y$ és un nombre parell. Ara, per aplicar el que hem vist abans: simplificant $x^2+y^2=z^2$ obtenim $(x/z)^2+(y/z)^2=1$, sigui $a=x/z$ i $b=y/z$. Per tant, tenim un element $a+bi$ de norma 1, que ens diu que hi ha una element $\beta$ tal que $a+bi=\beta/\ol\beta$. Com que $y\neq0$, podem utilitzar la $\beta$ calculada a l'exercici anterior:
+    \begin{align*}
+        \frac{x}{z}+\frac{y}{z}i&=\frac{z+x+yi}{z+x-yi}=\\
+        &=\frac{2yi}{x+z+yi}=\\
+        &=2\left(\frac{x+z}{yi}+1\right)\inv
+    \end{align*}
+    Com que no sembla que es pugui simplificar gaire més, sigui la fracció irreductible $\frac{u}{v}=\frac{x+z}{y}$, aleshores:
+    \[
+        x+z=uD\qquad y=vD
+    \]
+    Mirant-nos l'equació original, tenim que si $y$ és un nombre parell, aleshores $x$ és parell si i només si $z$ és parell: per tant, tant $x+z$ com $y$ són parells, és a dir, $D=2D'$: $x+z = 2uD'$, tenim que $x=uD'-e$ i $z=uD'+e$. Posant això a l'equació original tenim:
+    \begin{align*}
+        (uD'-e)^2+(2vD')^2&=(uD'+e)^2\\
+        u^2D'^2-2euD'+e^2+4v^2D'^2&=u^2D'^2+2euD'+e^2\\
+        v^2D'&=eu
+    \end{align*}
+    Però com que hem suposat que $(u,v)=1$ tenim que $v^2\mid eu\implies v^2\mid e$; a més, $u\mid v^2D'\implies u\mid D'$, és a dir, que podem escriure $e=v^2d$, $D'=ud$ (és la mateixa constant ja que $v^2D = eu$), i per tant, tenim
+    \[
+        \begin{cases}
+            x = u^2d-v^2d\\
+            y = 2uvd\\
+            z = u^2d+v^2d
+        \end{cases} 
+    \]
+    Que és el que volíem veure.
+    \subsection{Exercici 2.3}
+    Sigui $P=(p/r,q/r)\neq (-1,0)$ un punt de coordenades racionals de $C$, aleshores considerem la recta que passa pel punt $P$ i pel punt $V=(-1,0)$:
+    \[
+        L_P:y-\frac{q}{p+r}(x+1)=0
+    \]
+    Notem que aquesta recta ...
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 3 ----------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 1 Exercici 3}]
+        Equació de Fermat per $n=3$. Definim l'anell dels \textit{enters d'Eisenstein} com
+        \[
+            \ZZ[\rho]=\{a+b\rho|a,b\in\ZZ\},\qquad\text{on }\rho=\frac{1+\sqrt{-3}}{2}
+        \]
+        L'objectiu d'aquest exercici és demostrar que l'equació
+        \[
+        x^3+y^3=z^3
+        \]
+        no té cap solució amb $x,y,z\in\ZZ$ tals que $xyz\neq0$. Més en general, demostrarem que, per a tot $u\in\ZZ[\rho]^\times$, l'equació
+        \begin{equation}\label{FP1P3 equació de Fermat}
+            x^3+y^3=uz^3
+        \end{equation}
+        no té cap solució amb $x,y,z\in \ZZ[\rho]$, tals que $xyz\neq0$. Podeu seguir els següents passos:
+        \begin{enumerate}
+            \item Demostreu que $\ZZ[\rho]$ és un anell euclidià i que $\ZZ[\rho]^\times=\langle \rho\rangle$.
+            \item Proveu que $\lambda=1+\rho$ és un element primer i que $3=\rho\inv\lambda^2$. Donat $\alpha\in\ZZ[\rho]$ no nul, denotarem per $\ord_\lambda(\alpha)$ la màxima potència de $\lambda$ dividint $\alpha$. Demostreu que donats $\alpha,\beta\in\ZZ[\rho]$ se satisfà
+            \[
+                \ord_\lambda(\alpha+\beta)\geq\min\{\ord_\lambda(\alpha),\ord_\lambda(\beta)\}.
+            \]
+            Mostreu que en la desigualtat de dalt, es té igualtat si $\ord_\lambda(\alpha)\neq\ord_\lambda(\beta)$.
+            \item Demostreu que l'aplicació
+            \[
+                \Phi:\ZZ[\rho]\to\ZZ/3\ZZ,\qquad \Phi(a+b\rho)=a-b
+            \]
+            és un morfisme d'anells i que indueix un isomorfisme $\ZZ[\rho]/(\lambda)\simeq\ZZ/3\ZZ$.
+            \item Proveu que no existeixen solucions tals que $\lambda\nmid xyz$\\
+            \textit{Indicacions: Vegeu que si $x\in\ZZ[\rho]$ i $x\equiv \pm1\pmod\lambda$, aleshores $x^3\equiv \pm 1\pmod {\lambda^4}$.}
+            \item Demostreu que tota solució amb $\lambda\nmid xy$ compleix $\lambda^2\mid z$.
+            \item Demostreu que, per a tota solució amb $\lambda\nmid xy$, d'entre els nombres
+            \[
+                \ord_\lambda(x+y),
+                \ord_\lambda(\rho^2x+\rho^4y),
+                \ord_\lambda(\rho^4x+\rho^2y)
+            \]
+            n'hi ha exactament dos que valen 1.\\
+            \textit{Indicacions: Considereu la descomposició
+            \[
+                (x+y)(\rho^2x+\rho^4y)(\rho^4x+\rho^2y)=x^3+y^3=uz^3
+            \]}
+            \item Diem que una solució de (\ref{FP1P3 equació de Fermat}) és primitiva si $\gcd(x,y,z)=1$. Proveu que si $(x,y,z)$ és una solució primitiva amb $\lambda\nmid xy$, aleshores n'hi ha una altra $(x_1,y_1,z_1)$ amb $\lambda\nmid x_1y_1$ i amb $\ord_\lambda z_1<\ord_\lambda z$.
+            \item Demostreu que (\ref{FP1P3 equació de Fermat}) no té cap solució amb $x,y,z\in\ZZ[\rho]$ tals que $xyz\neq0$.
+        \end{enumerate}
+    \end{tcolorbox}
+    \subsection{Exercici 3.1}
+    Sigui $a,b\in \ZZ[\rho]$, amb $b\neq0$. Sigui $a/b=\alpha+\beta\rho$, i siguin $A$,$B$ els enters més propers a $\alpha$ i a $\beta$ respectivament. Sigui 
+    \[
+        N(x+iy)=(x+y\rho)(x+y(1-\rho))=x^2+xy+y^2
+    \]
+    la norma dels enters d'Eisenstein (la norma ve de $N(z)=z\sigma(z)$, on $\sigma$ envia $\rho\mapsto\rho^2=-1-\rho$). Aleshores, tenim que $N(\underbrace{A-\alpha}_{\eps_x})<\frac{1}{2}$, i $N(\underbrace{B-\beta}_{\eps_y})<\frac{1}{2}$. Per tant, tenim:
+    \[
+        a=\underbrace{(A+B\rho)}_qb+\underbrace{b(\eps_x+\eps_y\rho)}_r.
+    \]
+    Ara només ens falta veure que $N(r)<N(b)$:
+    \[
+        \frac{N(r)}{N(b)}=\frac{N(b(\eps_x+\eps_y\rho))}{N(b)}=N(\eps_x+\eps_y\rho)=
+        \eps_x^2+\eps_x\eps_y+\eps_y^2\leq \frac{3}{4}<1
+    \]
+    Que és el que volíem veure.
+    \subsection{Exercici 3.2}
+    Notem que la norma de $\lambda$ és
+    \[
+    N(\lambda)=1+1+1=3
+    \]
+    Per tant, com que la norma és un primer de $\ZZ$, $\lambda$ ha de ser un primer de $\ZZ[\rho]$. Per veure que $3$ no és primer:
+    \[
+        \rho^{-1}\lambda^2=\frac{1-\sqrt 3i}{2}\left(\frac{3+\sqrt{3}i}{2}\right)^2=
+        3
+        % \frac{1-\sqrt 3i}{2}\frac{3+3\sqrt{3}i}{2}=
+        % \frac{3(1-\sqrt 3i)(1+\sqrt{3}i)}{4}=
+    \]
+    Com que estem en un anell euclidià, tenim que és de factorització única, i per tant la definició de $\ord_\lambda$ té sentit. I l'argument que demostra que la valuació $p$-àdica satisfà aquesta propietat, també funciona aquí.
+    \subsection{Exercici 3.3}
+    Notem que aquest morfisme és lineal, per tant no ens hem de preocupar de que se satisfaci la propietat suma; només hem de veure que funciona amb el producte:
+    \begin{align*}
+        \Phi[(a+b\rho)(c+d\rho)]&=\Phi(ac+ad\rho+bc\rho+bd\rho-bd)=\\
+        &=ac-bd-ad-bc-bd=\\
+        &=a(c-d)-b(c-d)-3bd=\\
+        &=(a-b)(c-d)=\\
+        &=\Phi(a+b\rho)\Phi(c+d\rho)
+    \end{align*}
+    Que és el que volíem veure.\par
+    Per veure la segona part, hem de veure que el nucli de $\Phi$ és $(\lambda)$ (i pel primer teorema d'isomorfia ja ho tenim); però:
+    \begin{align*}
+        \Phi(a+b\rho)=0&\iff a-b\equiv 0\pmod 3\\
+        &\iff a=b+3k\\
+        &\iff a+b\rho=b(1+\rho)+3k=b\lambda+\rho\inv\lambda^2k=\lambda(b+3k)\\
+        &\iff a+b\rho\in(\lambda)
+    \end{align*}
+    Que és el que volíem veure.
+    \subsection{Exercici 3.4}
+    Suposem que $x^3+y^3=uz^3$, i que $\lambda\nmid x$, aleshores $x\equiv \pm 1\pmod \lambda$ (pel que hem vist a l'exercici anterior). Per tant:
+    \[
+        x^3=(\pm1+w\lambda)^3=\pm1 +3w\lambda\pm3w^2\lambda^2+w^3\lambda^3
+    \]
+    I mirat mòdul $\lambda^4$ obtenim:
+    \[
+        x^3\equiv\pm1 +\rho\inv w\lambda^3\pm \cancelto{0}{\rho\inv w^2\lambda^4}+w^3\lambda^3=\lambda^3w(1-\rho+w^2)\pm1=\lambda^3 w(2-\cancelto{0}{\lambda}+w^2)\pm1
+    \]
+    Que és el mateix que veure que $w(2+w^2)\equiv0\pmod \lambda$, però  els quadrats a $\ZZ_3$ són $0,1$, si és 0 ja està, i si és $1$ $2+w^2\equiv 0\pmod \lambda$, que és el que volíem veure.\par
+    Ës a dir, si tenim que $\lambda\nmid xyz$, aleshores tindrem que $x,y,z\equiv \pm1\pmod \lambda$, i per tant, $x^3,y^3,z^3\equiv \pm1\pmod \lambda^4$, però no hi ha cap solució a $\pm1\pm1\equiv u\pmod \lambda^4$ (amb $u$ unitat), que és el que volíem veure.
+    \subsection{Exercici 3.5}
+    Suposem que $\lambda\nmid xy$, aleshores hi ha 3 casos: $x,y\equiv 1,1$, $x,y\equiv 1,-1$, $x,y\equiv -1,-1$. Si $x\equiv y$, aleshores ja sabem que això no té solució, i si $x\equiv-y\pmod \lambda$, tenim que $z^3\equiv 0\pmod\lambda^3$. Que això ens dona immediatament que $\lambda^2\mid z$.
+    \subsection{Exercici 3.6}
+    Suposem que $(x,y,z)$ és solució, aleshores $x,y\equiv 1,-1\pmod \lambda$.
+    Considerem el primer cas: $\ord_\lambda(x+y)\geq1$ (no pot ser menor, ja que sinó no seria solució), aleshores sense pèrdua de generalitat podem escriure:
+    \[
+        x = 1+a\lambda\qquad y=-1+b\lambda
+    \]
+    Que ens dona que
+    \[
+        x\equiv 1+a\lambda \pmod {\lambda^2}\qquad
+        y\equiv -1+b\lambda \pmod {\lambda^2}
+    \]
+    Però com que la suma ha de ser zero mòdul $\lambda^2$, tenim que $a\equiv-b\pmod \lambda^2$; i per tant:
+    \[
+        x\rho^2+y\rho^4\equiv (1+a\lambda)(\rho-1)+(1+a\lambda)\rho=(1+a\lambda)(2\rho-1)\not\equiv0\pmod{\lambda^4}.
+    \]
+    I l'altre cas es fa igual. Que ens dona el que volíem.\par
+    Per fer el cas $\ord_\lambda(\rho^2x+\rho^4y)$, (o el cas $\ord_\lambda(\rho^4x+\rho^2y)$), notem que si enviem $x'=\rho^2x$ i $y'=\rho^4 y$, continuen sent solucions, per tant pel que hem vist abans, ja estem (notem que no pot ser que els tres tinguin ordre 1, ja que el producte té ordre almenys 4).
+    \subsection{Exercici 3.7}
+    Suposem que $(x,y,z)$ és solució primitiva, aleshores considerem $(\frac{x-1}{\lambda},\frac{y+1}{\lambda},\frac{z}{\lambda})$.
+    \[
+        (x-1)^3+(y+1)^3=x^3-3x^2+3x-1+y^3+3y^2+3y+1=uz^3+3(x+y)(y-x+1)
+    \]
+    
+    % \[
+    %     \begin{cases*}
+    %         x^3+y^3=uz^3\\
+    %         (ax+b)^3+(cy+d)^3=uz/\lambda\\
+    %         ax+b+cy+d = \frac{x+y}{\lambda}\\
+    %         (ax+b)\rho^2+(cy+d)\rho^4 = \frac{x\rho^2+y\rho^4}{\lambda}\\
+    %         (ax+b)\rho^4+(cy+d)\rho^2 = \frac{x\rho^4+y\rho^2}{\lambda}\\
+    %         (\lambda-1)(ax+cy)=-\lambda(b+d)\\
+    %         (\lambda-1)(ax\rho^2+cy\rho^4)=-\lambda(b\rho^2+d\rho^4) \\
+    %         (\lambda-1)(ax\rho^4+cy\rho^2)=-\lambda(b\rho^4+d\rho^2) \\
+
+    %     \end{cases*}
+    % \]
+    \subsection{Exercici 3.8}
+    Sigui $(x,y,z)$ una solució primitiva de $x^3+y^3=uz^3$. Notem que fins ara sempre suposàvem que $\lambda\mid z$, però podria ser que $\lambda\mid x$:
+    % \[
+    %     (-x)^3+(-y)^3=u'z^3\iff x^3=y^3+(u''z)^3
+    % \]
+    % Que seria solució de l'equació de Fermat (a $\ZZ[\rho]$ hi han les arrels cúbiques de la unitat); per tant, sense pèrdua de generalitat, podem suposar que $$
+    \newpage
+
+\end{document}
+% ------------------------------------------------------
+% -------------------- Exercici XX ---------------------
+% ------------------------------------------------------
+    % \begin{tcolorbox}[title=\section{FP X Exercici XX}]
+    % \end{tcolorbox}
+    % \subsection{Exercici XXX}
+    % \newpage
