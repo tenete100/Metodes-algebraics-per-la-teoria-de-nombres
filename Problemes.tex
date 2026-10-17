@@ -7,7 +7,7 @@
 \begin{document}
 \pagestyle{fancy}
 % 
-\lhead{Carles Costa}
+\lhead{Bernat Esteve Sagarra}
 \rhead{Problemes de teoria de nombres}
 % ------------------------------------------------------
 % -------------------- Exercici 1 ----------------------
@@ -216,10 +216,10 @@
     \subsection{Exercici 3.3}
     Notem que aquest morfisme és lineal, per tant no ens hem de preocupar de que se satisfaci la propietat suma; només hem de veure que funciona amb el producte:
     \begin{align*}
-        \Phi[(a+b\rho)(c+d\rho)]&=\Phi(ac+ad\rho+bc\rho+bd\rho-bd)=\\
-        &=ac-bd-ad-bc-bd=\\
-        &=a(c-d)-b(c-d)-3bd=\\
-        &=(a-b)(c-d)=\\
+        \Phi[(a+b\rho)(c+d\rho)]&=\Phi(ac+ad\rho+bc\rho+bd\rho-bd)\\
+        &=ac-bd-ad-bc-bd\\
+        &=a(c-d)-b(c-d)-3bd\\
+        &=(a-b)(c-d)\\
         &=\Phi(a+b\rho)\Phi(c+d\rho)
     \end{align*}
     Que és el que volíem veure.\par
@@ -262,10 +262,15 @@
     I l'altre cas es fa igual. Que ens dona el que volíem.\par
     Per fer el cas $\ord_\lambda(\rho^2x+\rho^4y)$, (o el cas $\ord_\lambda(\rho^4x+\rho^2y)$), notem que si enviem $x'=\rho^2x$ i $y'=\rho^4 y$, continuen sent solucions, per tant pel que hem vist abans, ja estem (notem que no pot ser que els tres tinguin ordre 1, ja que el producte té ordre almenys 4).
     \subsection{Exercici 3.7}
-    Suposem que $(x,y,z)$ és solució primitiva, aleshores considerem $(\frac{x-1}{\lambda},\frac{y+1}{\lambda},\frac{z}{\lambda})$.
+    Suposem que $(x,y,z)$ és solució primitiva, aleshores considerem
     \[
-        (x-1)^3+(y+1)^3=x^3-3x^2+3x-1+y^3+3y^2+3y+1=uz^3+3(x+y)(y-x+1)
+        \begin{array}{l}
+            A=x+y\\
+            B=\rho^2x+\rho^4y\\
+            C=\rho^4x+\rho^2y\\
+        \end{array}
     \]
+    Aleshores, s'ha de veure que $A,B$ i $C$ són cubs (de fet, no ho són, però si dividim pel factor comú que tinguin, i en total tenim $ABC=uz^3$); i anomenem $z$ al element que té un $\ord_\lambda\geq4$, i als altres $x'$ i $y'$. Aleshores, és fàcil de veure que $x'+y'=z'$, i que $z'$ té un ordre menor que $z$. I fens un argument de descens infinit, arribes a que $x,y,z=0$.
     
     % \[
     %     \begin{cases*}
@@ -280,14 +285,343 @@
 
     %     \end{cases*}
     % \]
-    \subsection{Exercici 3.8}
-    Sigui $(x,y,z)$ una solució primitiva de $x^3+y^3=uz^3$. Notem que fins ara sempre suposàvem que $\lambda\mid z$, però podria ser que $\lambda\mid x$:
+    % \subsection{Exercici 3.8}
+    % Sigui $(x,y,z)$ una solució primitiva de $x^3+y^3=uz^3$. Notem que fins ara sempre suposàvem que $\lambda\mid z$, però podria ser que $\lambda\mid x$:
     % \[
     %     (-x)^3+(-y)^3=u'z^3\iff x^3=y^3+(u''z)^3
     % \]
     % Que seria solució de l'equació de Fermat (a $\ZZ[\rho]$ hi han les arrels cúbiques de la unitat); per tant, sense pèrdua de generalitat, podem suposar que $$
     \newpage
 
+% ------------------------------------------------------
+% -------------------- Exercici 1 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 2 Exercici 1}]
+        Sigui $D$ un domini d'integritat i $x\in D\setminus \{0\}$. Demostreu que $x$ és irreductible si i només si $(x)$ és maximal entre tots els ideals principals propis de $D$. Deduïu que si $D$ és un domini d'ideals principals, aleshores $x$ és irreductible si i només si $(x)$ és maximal. Doneu un exemple d'un domini de factorització única $D$ i d'un element irreductible $x\in D$ tal que $(x)$ no sigui maximal.
+    \end{tcolorbox}
+    \subsection{Exercici 1}
+    Notem que $x=ab$ si i només si $(x)\subseteq (a),(b)$. I d'aquí en traiem que si $x$ és irreductible ($a$ o $b$ són unitats), l'ideal és maximal; i viceversa. I en el cas de que $D$ sigui principal, aleshores ja estem.\par
+    Considerem $\ZZ[X]$, notem que $X$ és irreductible, però $(X)\subsetneq (2,X)$.
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 2 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 2 Exercici 2}]
+        Sigui $D=\ZZ[\frac{1+\sqrt{m}}{2}]$ per $m\equiv 1\pmod4$ i $m<0$.\par
+        Sigui $D=\ZZ\left[\frac{1+\sqrt{m}}{2}\right]$ per $m\equiv 1\pmod4$ i $m<0$.
+        \begin{enumerate}
+            \item Demostreu que $u\in D^\times$ si i només si el valor absolut complex de $u$ és $1$.
+            \item Demostreu que si $m<-3$ aleshores $D^\times=\pm1$.
+            \item Demostreu que 2 i 3 són elements irreductibles de $\ZZ[\frac{1+\sqrt{-19}}{2}]$.
+        \end{enumerate}
+    \end{tcolorbox}
+    \subsection{Exercici 2.1}
+    Notem que $N(u)=u\ol u$, per tant, si té norma 1, $\ol u$ és l'invers. Si $u$ és unitat aleshores $N(uu\inv)=1=N(u)N(u\inv)$, i els 2 únics enters positius que multiplicats donen u són 1.\par
+    \subsection{Exercici 2.2}
+    Si $m<-3$, aleshores hem de resoldre:
+    \[
+        N(a+b\zeta)=(a+b\zeta)(a+b\ol \zeta)=1,
+    \]
+    on $\zeta=\frac{1+\sqrt{-m}}{2}$, per tant:
+    \begin{align*}
+        (a+b\zeta)(a+b\ol \zeta)=&\left(a+b\frac{1+\sqrt{-m}}{2}\right)\left(a+b \frac{1-\sqrt{-m}}{2}\right)\\
+        =&\frac{(2a+b+b\sqrt{-m})(2a+b-b\sqrt{-m})}{4}\\
+        =&\frac{4a^2+4ab+b^2-mb^2}{4}\\
+        =&a^2+ab+\frac{1-m}{4}b^2=1
+    \end{align*}
+    I si mirem quins punts hi han a la bola $N\leq1$:
+    \[
+        \begin{cases*}
+            b^2=\frac{4}{1-m}&\text{si }a=0\\
+            1+\frac{1-m}4b^2+b=1&\text{si }a=1\\
+        \end{cases*}
+    \]
+    Però si $m<-3$ aleshores $\frac{4}{1-m}<1$, i per tant $b^2<1$; que ens diu que només hi ha solució amb $a=1$ i $b=0$ per les $m<-3$.
+    \subsection{Exercici 2.3}
+    Notem que mirant normes no aconseguirem res. Per tant, considerem
+    \[
+        2=ab\implies N(2)=4=N(a)N(b)
+    \]
+    Per tant, hem de trobar elements de norma 2.
+    \[
+        2=N(x+y\zeta)=x^2+xy+10y^2
+    \]
+    Però $x^2+xy+y^2\geq0$, per tant tenim $9y^2<2$, és a dir, $y=0$, i per tant ha de ser real, però això no pot ser. Pel cas $3=ab$ tenim un cas similar, però amb $9y^2<3$.
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 3 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 2 Exercici 3}]
+        Sigui $D$ un domini d'integritat que no és un cos. Diem que un element $\beta\in D\setminus(D^\times\cup\{0\})$ és un \textit{divisor lateral universal} si per a tot $\alpha\in D$ existeix $\delta\in D^\times\cup\{0\}$ tal que $\alpha-\delta$ és divisible per $\beta$.
+        \begin{enumerate}
+            \item Demostreu que si $D$ no té divisors laterals universals, aleshores $D$ no és domini euclidià respecte a cap funció euclidiana
+            \[
+                N:D\to\ZZ_{\geq0}.
+            \]
+            \textit{Indicació: Suposant que $D$ és un domini euclidià respecte a $N$, considereu el mínim del conjunt \[S=\{N(\alpha)\mid\alpha\in D\setminus(D^\times\cup\{0\})\}.\]}
+            \item Demostreu que $D=\ZZ\left[\frac{1+\sqrt{-19}}{2}\right]$ no és domini euclidià per a cap funció euclidiana.
+            \textit{Indicació: Considerant l'element $\alpha=2$, vegeu que els únics divisors laterals universals possibles són associats a 2 i 3. Considerant l'element $\zeta=\frac{1+\sqrt{-19}}{2}$, demostreu que 2 i 3 no poden ser divisors laterals universals.}\par
+        \end{enumerate}
+        \textit{Comentari: En un full de problemes posterior demostrarem, no obstant, que $D$ és un domini d'ideals principals.} 
+    \end{tcolorbox}
+    \subsection{Exercici 3.1}
+    Suposem que $D$ és un domini euclidià. Sigui $x$ un element de norma mínima de $D\setminus(D^\times\cup\{0\})$. Considerem ara un $y\in D$ qualsevol, com que $D$ és euclidià, sabem que existeixen $q,r\in D$ tals que $y=xq+r$ amb $N(r)<N(x)$, i com que $x$ té norma mínima, $r\in D^\times\cup\{0\}$.
+    \subsection{Exercici 3.2}
+    Suposem que $D$ té un divisor lateral universal $z$, per tant:
+    \[
+        z\mid 2+u\qquad \text{on $u$ és una unitat.}
+    \]
+    És a dir:
+    \[
+        z\mid 1\quad\text{ o }\quad z\mid 2\quad \text{ o }\quad z\mid3.
+    \]
+    És a dir, $z\in \{\pm2,\pm3\}$ (i per tant, la norma pot ser 4 o 9). Com que ha de ser un divisor lateral per tot $d\in D$, en particular per $d=\zeta$:
+    \[
+        z\mid \frac{1+\sqrt{-19}}{2}
+        \quad
+        \text{ o }
+        \quad
+        z\mid \frac{1+\sqrt{-19}}{2}+1
+        \quad
+        \text{ o }
+        \quad
+        z\mid \frac{1+\sqrt{-19}}{2}-1.
+    \]
+    I mirant normes, tenim:
+    \[
+        N(z)\mid 5
+        \quad
+        \text{ o }
+        \quad
+        N(z)\mid 7.
+    \]
+    Però que això contradiu el que dèiem abans.
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 1 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 4 Exercici 1}]
+        Sigui $K=\QQ(\sqrt{m})$, on $m$ és un enter lliure de quadrats. Demostreu que l'anell d'enters algebraics de $K$ està donat per
+        \[
+            \mathcal{O}_K=\begin{cases}
+                \ZZ[\sqrt m]& \text{si }m\not \equiv 1\pmod4,\\
+                \ZZ[\frac{1+\sqrt m}2]& \text{si }m \equiv 1\pmod4,\\
+            \end{cases}
+        \]
+    \end{tcolorbox}
+    \subsection{Exercici 1}
+    Primer veurem la primera inclusió ($\supseteq$):\\
+    Notem que $\sqrt{m}$ és arrel de $x^2-m$. I si $m\equiv1\pmod4$, aleshores $\half(1+\sqrt{m})$ és arrel de $x^2-x-\frac{m-1}{4}$.\par
+
+    Per veure l'altra inclusió, prenem $a\in \QQ(\sqrt{m})$ un enter algebraic. Aleshores $a=x+y\sqrt{m}$ amb $x,y\in \QQ$, i com que és enter, existeix un polinomi $f$ que l'annul·la. Com que $[\QQ(\sqrt{m}):\QQ]=2$, podem suposar que $f$ és un polinomi mònic de grau dos: $f(X)=X^2+pX+q$, amb $p,q\in \ZZ$. Per tant:
+    % \[
+    %     f(a)=
+    %     % (x+y\sqrt{m})^2+p(x+y\sqrt{m})+q=
+    %     % x^2+2xy\sqrt{m}+my^2+px+py\sqrt{m}+q=
+    %     (x^2+my^2+px+q)+(2x+p)y\sqrt{m}=0
+    % \]
+    % I per tant:
+    % \[
+    %     \begin{cases}
+    %         x^2+px+q+my^2=0\\
+    %         (2x+p)y=0
+    %     \end{cases}
+    % \]
+    % Notem que si $y=0$, aleshores $a\in \ZZ$; per tant podem suposar que $y\neq0$.
+    % \[
+    % \begin{cases}
+    %     x^2+px+q+my^2=0\\
+    %     x=\frac{-p}{2}
+    % \end{cases}\implies
+    % \begin{cases}
+    %     \frac{4q-p^2}{4}+my^2=0\\
+    %     x=\frac{-p}{2}
+    % \end{cases}\implies
+    % \]
+    \[
+        2a=-p\pm\sqrt{p^2-4q}=2x+2y\sqrt{m}
+    \]
+    Si suposem que $a\notin\ZZ$, aleshores tenim que
+    \[
+        \begin{cases}
+            -p=2x\\
+            p^2-4q=4y^2m
+        \end{cases}
+    \]
+    De l'igualtat de dalt, en podem treure que $x\in\half\ZZ$. De l'igualtat de baix en podem treure que $4y^2m\in \ZZ$. Però si escrivim $y=\frac{y_n}{y_d}$, aleshores, $y_d^2\mid 4m$, però com que $m$ és lliure de quadrats, tenim que $y_d\mid 2$: és a dir, $y\in \half\ZZ$.\par
+    Sigui $2x=u\in \ZZ$ i $2y=v\in\ZZ$. Aleshores:
+    \[
+        u^2-mv^2=4x^2-4y^2m=4q\in4\ZZ
+    \]
+    Per tant, si ens mirem les coses mòdul 4 obtenim que
+    \[
+    u^2\equiv mv^2\pmod4
+    \]
+    Si $u^2\equiv 0\pmod 4$, aleshores, com que $4\nmid m$, $v^2\equiv 0\pmod 4$ (i per tant, els dos són parells, per tant $x+y\sqrt{m}\in \ZZ[\sqrt{m}]$).\\
+    Si $u^2\equiv 1\pmod 4$, aleshores $v^2\equiv 1\pmod 4$ i $m\equiv1\pmod4$. I d'aquí podem concloure que
+    \[
+        x+y\sqrt{m}=\frac{u+v\sqrt{m}}{2}=\frac{u-v}{2}+v\frac{1+\sqrt{m}}{2}
+    \]
+    (Com que $u\equiv v\pmod 2$, la resta es pot dividir per 2).
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 2 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 4 Exercici 2}]
+        Sigui $K=\QQ(\sqrt{m})$, on $m$ és un enter \emph{negatiu} lliure de quadrats. Demostreu que
+        \[
+            (\mathcal{O}_K)^\times=\begin{cases}
+                \langle i \rangle&\text{si } m=-1,\\
+                \langle \rho \rangle&\text{si } m=-3,\\
+                \langle -1 \rangle&\text{altrament.}
+            \end{cases}
+        \]
+    \end{tcolorbox}
+    \subsection{Exercici 2}
+    Notem que si $m\not\equiv1\pmod 4$, aleshores 
+    \[
+        N(a)=x^2-my^2\geq x^2+y^2
+    \]
+    Per tant, només hem de comprovar $\pm1$ (que són unitats), i $\pm \sqrt{m}$ que és unitat si i només si $m=-1$.\par
+    El cas $m\equiv 1\pmod 4$ ja s'ha fet en una altra llista de problemes.
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 3 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 4 Exercici 3}]
+        Sigui $K=\QQ(\sqrt{m})$, on $m\neq1$ és un enter \emph{positiu} lliure de quadrats. L'objectiu d'aquest exercici és demostrar que
+        \[
+            \#(\mathcal{O}_k)^\times=\infty
+        \]
+        Sobre $\ZZ[\sqrt{m}]$, definim la següent norma
+        \[
+            N:\ZZ[\sqrt{m}]\to\ZZ,\qquad N(a+b\sqrt{m})=a^2-mb^2.
+        \]
+        Noteu que aquest valor no és el quadrat de la norma complexa i que, en particular, pot prendre valors negatius.
+        \begin{enumerate}
+            \item Sigui $\alpha\in\ZZ[\sqrt{m}]$. Demostreu que $\alpha\in\ZZ[\sqrt{m}]^\times$ si i només si $N(\alpha)=\pm1$. Doneu un exemple de $m$ i $\alpha$ tal que $N(\alpha)=-1$.
+            \item Demostreu que per a tot $n\in\ZZ_{n\geq1}$ existeixen $a,b\in\ZZ$ tals que\footnote{Aquesta desigualtat es pot fer més estricta, canviant el $1/n$ per $1/n^2$, pel teorema d'aproximació de Dirichlet.}
+            \begin{equation}\label{FP4P3 aproximacio de arrels quadrades}
+                0<|a-b\sqrt{m}|<\frac{1}{n}\quad\text{ i }\quad 0<b<n.
+            \end{equation}
+            \item Demostreu que existeixen infinits parells d'enters $(a,b)$ tals que
+            \begin{equation}\label{FP4P3 bones aproximacions tenen norma petita}
+                0<|N(a+b\sqrt{m})|<1+2\sqrt{m}.
+            \end{equation}
+            \item Demostreu que existeix un enter $t$ amb $0<|t|<1+2\sqrt{m}$ tal que l'equació
+            \[
+                N(a+b\sqrt{s})=t
+            \]
+            té infinites solucions en $a,b\in\ZZ$ amb $a,b>0$ i $\gcd(b,t)=1$.
+            \item Demostreu que existeix $\alpha \in\ZZ[\sqrt{m}]$ amb $\alpha\neq \pm1$, tal que $N(\alpha)=\pm1$.
+            \item Deduïu de l'apartat anterior que $\#(\mathcal{O}_K)^\times=\infty$.
+        \end{enumerate}
+    \end{tcolorbox}
+    \subsection{Exercici 3.1}
+    Per veure la primera implicació, si $N(a)=a\ol a=1$.\par
+    Si $ab=1$ aleshores $N(a)N(b)=1$ i per tant $N(a)\in\ZZ^\times=\langle-1\rangle$.\par
+    A $\ZZ[\sqrt{2}]$, $\alpha=1-\sqrt{2}$ té norma $-1$.
+    \subsection{Exercici 3.2}
+    Considerem el conjunt 
+    \[A_n=\left\{\floor{i\sqrt{m}}-i\sqrt{m}+1\mid i=0,1,\dots,n\right\}.\]
+    Notem que $|A_n|=n+1$, i que
+    \[
+        0<\floor{i\sqrt{m}}-i\sqrt{m}+1\leq1
+    \]
+    Per tant, si trenquem l'interval $(0,1]$ en $n$ trossos ($(0,1]=(0,1/n]\cup(1/n,2/n]\cup\dots\cup(n-1/n,1]$) hi haurà com a mínim dos elements de $A_n$ en el mateix interval. Suposem que $\floor{i\sqrt{m}}-i\sqrt{m}+1$ i $\floor{j\sqrt{m}}-j\sqrt{m}+1$ pertanyen al mateix interval, aleshores
+    \[
+        \underbrace{\floor{i\sqrt{m}}-\floor{j\sqrt{m}}}_{a}
+        -\underbrace{(i-j)}_b\sqrt{m}.
+    \]
+    Per veure que $0<b<n$, notem que ara mateix només tenim que $-n<b<n$ i que $b\neq0$, per tant, si $b<0$ podem prendre $a\mapsto -a$ i $b\mapsto-b$. Notem que hem pres $a$ i $b$ de tal manera que se satisfà la propietat de l'enunciat.
+    \subsection{Exercici 3.3}
+    Fixem un $n>0$, i suposem que tenim un $(a,b)$ que satisfà la propietat \ref{FP4P3 aproximacio de arrels quadrades}, volem veure que aleshores satisfà també la propietat \ref{FP4P3 bones aproximacions tenen norma petita} (com que $m$ és lliure de quadrats, aleshores $N(p)=p\ol p$).\par
+    \[
+        |N(a+b\sqrt{m})|=
+        |a+b\sqrt{m}||a-b\sqrt{m}|<
+        \frac{|a+b\sqrt{m}|}{n}=
+        \left|\frac{a}{n}+\frac{b}{n}\sqrt{m}\right|
+    \]
+    Però del fet que $0<b<n$ en podem deduir que:
+    \begin{align}\label{FP4P3 desigualtat 1}
+        |a/n+b/n\sqrt{m}|\leq|a/n|+|b/n\sqrt{m}|\leq|a/n|+\sqrt{m}.
+    \end{align}
+    I de que $|a-b\sqrt{m}|<1/n$ en treiem que
+    \begin{align}\label{FP4P3 desigualtat 2}
+        |a/n|\leq\frac{|a-b\sqrt{n}|+|b\sqrt{m}|}{n}\leq 1/n^2+\sqrt{m}<1+\sqrt{m}.
+    \end{align}
+    I ajuntant \ref{FP4P3 desigualtat 1} i \ref{FP4P3 desigualtat 2} obtenim que $N(a+b\sqrt{m})<1+2\sqrt{m}$, i com que $b\sqrt{m}\not\in \ZZ$ la norma no pot ser zero.\par
+    Per tant, si fem variar la $n$ cada vegada més petita, obtindrem una successió amb termes diferents. És a dir, si considerem $a_k+b_k\sqrt{m}$ un element que satisfaci \ref{FP4P3 aproximacio de arrels quadrades} per $n=k$, aleshores podem considerar $\{a_{k_j}+b_{k_j}\sqrt{m}\}_{j\in\NN}$ una successió tal que $\frac{1}{k_{j+1}}<|a_{k_j}-b_{k_j}\sqrt{m}|(<\frac{1}{k_j})$, aleshores tots els termes seran diferents, i per tant, sabem que n'hi ha infinits.
+    \subsection{Exercici 3.4}
+    Considerem la seqüència $a_n+b_n\sqrt{m}$ com l'hem definit abans. Notem que podem suposar que $a_n$ i $b_n$ són coprimers (si no ho són, dividint aconseguim una nova parella amb norma més petita, i amb $b'<b$). Prenent la parcial $a_{n_k}+b_{n_k}\sqrt{m}$ com l'hem definit abans.\par
+    Com que tenim infinits termes, i la norma és un enter, per tant hi ha d'haver algun enter $1,2,\dots,\floor{1+2\sqrt{m}}$ que es repeteixi infinites vegades. Ara hem de veure que $a,b>0$ i que $\gcd(b,t)=1$. Notem que podem canviar el signe de $a$ i de $b$ sense que canviï la norma, per tant, podem suposar que $a,b>0$.\par
+    Sigui $g=\gcd(b,t)$, aleshores
+    \[
+        g=\gcd(b,t)=\gcd(b,a^2-b^2m)=\gcd(b,a^2)\leq\gcd(b,a)^2=1
+    \]
+    Per tant, si $g=1$, que és el que volíem veure.
+    \subsection{Exercici 3.5}
+    Considerem la successió $\{(a_n,b_n)\}_n$ solucions de l'equació anterior. Considerem $a_ib_i^{-1}\pmod t$, una d'aquestes classes tindrà infinits elements. Sigui $\{(a_{n_k},b_{n_k})\}_k$ una successió (infinita) d'elements tals que $a_{n_i}b_{n_i}\inv\equiv a_{n_1}b_{n_1}\inv\pmod t$. Sigui $(a_{n_i},b_{n_i})=(a,b)$ i $(a_{n_j},b_{n_j})=(a',b')$. Considerem
+    \[
+        \alpha=\frac{a+b\sqrt{m}}{a'+b'\sqrt{m}}=\frac{(a+b\sqrt{m})(a'-b'\sqrt{m})}{t}=\frac{aa'-bb'm}{t}+\frac{a'b-ab'}{t}\sqrt{m}
+    \]
+    Però notem que $t\mid a'b-b'a$. De $N(a+b\sqrt{n})=t$ i de $ab'\equiv a'b\pmod t$ en podem treure:
+    \[
+        aa'\equiv ab' \frac{a'}{b'}\equiv a^2\frac{b'}{b}\equiv b^2m\frac{b'}{b}=bb'm 
+    \]
+    Per tant, $\alpha\in\mathcal{O}_k$; i per simetria, $\alpha\inv\in\mathcal{O}_k$, que ens diu que $\alpha\in\mathcal{O}_k^\times$.
+    \subsection{Exercici 3.6}
+    Per la construcció d'abans, tenim que per cada parella de $(a_{n_k},b_{n_k})$, $\alpha_{(i,1)}=\frac{a_{n_i}+b_{n_i}\sqrt{m}}{a_{n_1}+b_{n_1}\sqrt{m}}$. Per tant, tenim que $\mathcal{O}_K^\times$ és un conjunt infinit.
+    \newpage
+% ------------------------------------------------------
+% -------------------- Exercici 4 ---------------------
+% ------------------------------------------------------
+    \begin{tcolorbox}[title=\section{FP 4 Exercici 4}]
+        Escriviu
+        \[
+            \alpha=\left(\frac{1+\sqrt{2}}{9}\right)^{1/3}+\left(\frac{1-\sqrt{2}}{9}\right)^{1/3}
+        \]
+        com el quocient d'un enter algebraic per un enter.
+    \end{tcolorbox}
+    \subsection{Exercici 4}
+    Considerem $\alpha=a/3$. Aleshores, volem veure que $a$ és un enter algebraic. Recordem que els enters algebraic són un anell, per tant, si veiem que els dos sumands són algebraics, ja estarem.\par
+    Recordem que que a teoria vam veure que si un nombre és arrel d'un polinomi mònic amb coeficients a $\ol\ZZ$, aleshores és un enter algebraic.\par
+    Per veure que $\sqrt{2}$ és un enter algebraic, considerem $T^2-2$. Per veure que $(3\pm3\sqrt{2})^{1/3}$ és un enter algebraic considerem $T^3-3\mp3\sqrt{2}$. Que és el que volíem veure.
+    % \begin{align*}
+    %     \alpha&=\left(\frac{1+\sqrt{2}}{9}\right)^{1/3}+\left(\frac{1-\sqrt{2}}{9}\right)^{1/3}=\\
+    %     &=\left(
+    %         \frac{2}{9}
+    %         +\frac{1}{3}\sqrt[3]{
+    %         -1-\sqrt{2}}
+    %         +\frac{1}{3}\sqrt[3]{-1+\sqrt{2}}
+    %     \right)^{1/3}.
+    % \end{align*}
+    % Per tant $3\alpha$ es pot escriure com 
+    % \[
+    %     3\alpha=\left(6+9\sqrt[3]{-1-\sqrt{2}}+9\sqrt[3]{-1+\sqrt{2}}\right)^{1/3}
+    % \]
+    % Ara veurem que $3\alpha$ és algebraic. Recordem que a teoria vam veure que si un nombre és arrel d'un polinomi mònic amb coeficients enters algebraics, aleshores és un enter algebraic. Per tant, considerem el polinomi:
+    % \[
+    %     \begin{array}{r@{\,=\,}l}
+    %         p_1(X)&X^2-2\\
+    %         p_2(X)&X^3+1+\sqrt{2}\\
+    %         p_3(X)&X^3+1-\sqrt{2}\\
+    %         p_4(X)&X^3-6-9\sqrt[3]{-1-\sqrt{2}}-9\sqrt[3]{-1+\sqrt{2}}
+    %     \end{array}
+    % \]
+    % I com que $3\alpha$ és arrel de $p_4$
+    % \[
+    %     \frac{x^9 - 18x^6 + 108x^3 + 1242}{3^{21}}=
+        
+    %     \sqrt[3]{1-\sqrt{2}}
+    %     +\sqrt[3]{1+\sqrt{2}}
+    % \]
+    % \[
+    %     % (((X^3-6)/9)^3+2)/3=
+    %     \frac{(x^9 - 18x^6 + 108x^3 + 1242)^3}{3^{21}}=
+    %     2+\sqrt[3]{-1+\sqrt{2}}+\sqrt[3]{-1-\sqrt{2}}
+    % \]
+    \newpage
 \end{document}
 % ------------------------------------------------------
 % -------------------- Exercici XX ---------------------
